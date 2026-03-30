@@ -57,25 +57,17 @@
   <!-- ── Section 2: E sweep (Reviewer zN9t) ── -->
   <h2 class="section-title">Reviewer zN9t — Material Parameter Sensitivity (E sweep)</h2>
   <p style="font-size:0.9rem; color:#555; margin-bottom:1.2rem;">
-    Same rubber duck geometry, same free-fall conditions, varying Young's modulus E.
-    PIXIE predicts <strong style="color:#23a55a;">E = 4×10⁴ Pa</strong> — the only value producing physically plausible rubber behavior.
+    Same rubber duck geometry, same free-fall, varying Young's modulus E.
+    PIXIE predicts <strong style="color:#23a55a;">E = 4×10⁴ Pa</strong> — values too low produce unphysical collapse; values too high produce near-rigid motion.
   </p>
 
-  <!-- Row 1: soft cases -->
-  <div class="columns is-variable is-2" style="margin-bottom:0.5rem;">
+  <div class="columns is-variable is-2">
     <div class="column">
       <div class="video-label">E = 1×10² Pa</div>
       <video width="100%" autoplay loop muted playsinline controls>
         <source src="./static/videos/e_sweep/E1e2.mp4" type="video/mp4" />
       </video>
       <p class="video-caption">way too soft</p>
-    </div>
-    <div class="column">
-      <div class="video-label">E = 5×10² Pa</div>
-      <video width="100%" autoplay loop muted playsinline controls>
-        <source src="./static/videos/e_sweep/E5e2.mp4" type="video/mp4" />
-      </video>
-      <p class="video-caption">too soft</p>
     </div>
     <div class="column">
       <div class="video-label">E = 1×10³ Pa</div>
@@ -92,29 +84,11 @@
       <p class="video-caption">slightly soft</p>
     </div>
     <div class="column">
-      <div class="video-label">E = 1×10⁴ Pa</div>
-      <video width="100%" autoplay loop muted playsinline controls>
+      <div class="video-label highlight">E = 1×10⁴ Pa ✓ near PIXIE (4×10⁴)</div>
+      <video width="100%" autoplay loop muted playsinline controls style="box-shadow:0 0 0 3px #23a55a, 0 2px 10px rgba(0,0,0,0.1);">
         <source src="./static/videos/e_sweep/E1e4.mp4" type="video/mp4" />
       </video>
-      <p class="video-caption">slightly soft</p>
-    </div>
-  </div>
-
-  <!-- Row 2: correct + stiff cases -->
-  <div class="columns is-variable is-2">
-    <div class="column">
-      <div class="video-label highlight">E = 4×10⁴ Pa ✓ PIXIE predicted</div>
-      <video width="100%" autoplay loop muted playsinline controls style="box-shadow:0 0 0 3px #23a55a, 0 2px 10px rgba(0,0,0,0.1);">
-        <source src="./static/videos/e_sweep/E4e4.mp4" type="video/mp4" />
-      </video>
-      <p class="video-caption" style="color:#23a55a; font-weight:600;">physically correct</p>
-    </div>
-    <div class="column">
-      <div class="video-label">E = 1×10⁵ Pa</div>
-      <video width="100%" autoplay loop muted playsinline controls>
-        <source src="./static/videos/e_sweep/E1e5.mp4" type="video/mp4" />
-      </video>
-      <p class="video-caption">slightly stiff</p>
+      <p class="video-caption" style="color:#23a55a; font-weight:600;">physically plausible</p>
     </div>
     <div class="column">
       <div class="video-label">E = 5×10⁵ Pa</div>
@@ -124,18 +98,11 @@
       <p class="video-caption">too stiff</p>
     </div>
     <div class="column">
-      <div class="video-label">E = 1×10⁶ Pa</div>
-      <video width="100%" autoplay loop muted playsinline controls>
-        <source src="./static/videos/e_sweep/E1e6.mp4" type="video/mp4" />
-      </video>
-      <p class="video-caption">too stiff</p>
-    </div>
-    <div class="column">
       <div class="video-label">E = 1×10⁷ Pa</div>
       <video width="100%" autoplay loop muted playsinline controls>
         <source src="./static/videos/e_sweep/E1e7.mp4" type="video/mp4" />
       </video>
-      <p class="video-caption">way too stiff (near-rigid)</p>
+      <p class="video-caption">near-rigid</p>
     </div>
   </div>
 
