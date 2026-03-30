@@ -3,66 +3,142 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>PIXIE — Multi-Object Rebuttal Demo</title>
+  <title>PIXIE — Rebuttal Demo</title>
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans" rel="stylesheet" />
   <link rel="stylesheet" href="./static/css/bulma.min.css" />
   <style>
     body { font-family: 'Noto Sans', sans-serif; background: #fff; color: #222; }
     h1.title { font-family: 'Google Sans', sans-serif; font-size: 1.9rem; }
+    h2.section-title {
+      font-family: 'Google Sans', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      padding-bottom: 0.3rem;
+      border-bottom: 2px solid #ededed;
+    }
     .video-label {
       font-family: 'Google Sans', sans-serif;
       font-weight: 600;
-      font-size: 1.05rem;
-      margin-bottom: 0.4rem;
+      font-size: 0.95rem;
+      margin-bottom: 0.3rem;
       color: #363636;
+      text-align: center;
     }
-    .video-caption {
-      font-size: 0.88rem;
-      color: #666;
-      margin-top: 0.5rem;
-      line-height: 1.55;
-    }
-    video { border-radius: 6px; box-shadow: 0 2px 12px rgba(0,0,0,0.12); }
+    .video-label.highlight { color: #23a55a; }
+    .video-caption { font-size: 0.82rem; color: #888; margin-top: 0.3rem; text-align: center; }
+    video { border-radius: 6px; box-shadow: 0 2px 10px rgba(0,0,0,0.10); }
   </style>
 </head>
 <body>
 
-<section class="section" style="max-width:960px; margin:0 auto;">
-  <h1 class="title">PIXIE — Multi-Object Physics Demo</h1>
-  <p class="subtitle" style="color:#666; margin-bottom:2rem;">
-    Rebuttal supplementary material: W4 — Scalability to complex multi-object scenes
-  </p>
+<section class="section" style="max-width:1100px; margin:0 auto;">
+  <h1 class="title">PIXIE — Rebuttal Supplementary</h1>
 
-  <div class="columns is-variable is-5">
-    <!-- Exp 1 -->
+  <!-- ── Section 1: Multi-object (Reviewer N6wS) ── -->
+  <h2 class="section-title">Reviewer N6wS — Multi-Object Scenes</h2>
+  <div class="columns is-variable is-5" style="margin-bottom:2.5rem;">
     <div class="column">
-      <div class="video-label">Experiment 1: Rubber Duck vs. Metal Can</div>
+      <div class="video-label">Rubber Duck vs. Metal Can</div>
       <video width="100%" autoplay loop muted playsinline controls>
-        <source src="./static/videos/rebuttal_duck_vs_can.mp4" type="video/mp4" />
+        <source src="./static/videos/duck_vs_can_gs.mp4" type="video/mp4" />
       </video>
-      <p class="video-caption">
-        PIXIE is run <em>independently</em> on each object, then both are instantiated in a shared MPM scene.<br>
-        <strong>Duck:</strong> E = 4×10<sup>4</sup> Pa, jelly (hyperelastic) &nbsp;|&nbsp;
-        <strong>Can:</strong> E = 1×10<sup>8</sup> Pa, metal (elastoplastic)<br>
-        The can tips over rigidly; the duck deforms on contact — behaviors emerge from PIXIE's predictions, not hand-tuning.
-      </p>
+      <p class="video-caption">PIXIE run independently on each object, composed in shared MPM scene.</p>
     </div>
-    <!-- Exp 2 -->
     <div class="column">
-      <div class="video-label">Experiment 2: Eight Rubber Ducks</div>
+      <div class="video-label">Eight Rubber Ducks</div>
       <video width="100%" autoplay loop muted playsinline controls>
-        <source src="./static/videos/rebuttal_ducks_only.mp4" type="video/mp4" />
+        <source src="./static/videos/ducks_only.mp4" type="video/mp4" />
       </video>
-      <p class="video-caption">
-        Eight duck instances, all with the same PIXIE-predicted parameters, launched toward each other.<br>
-        <strong>All ducks:</strong> E = 4×10<sup>4</sup> Pa, jelly (hyperelastic)<br>
-        Natural elastic collisions and deformation throughout — PIXIE's predictions compose cleanly across multiple objects.
-      </p>
+      <p class="video-caption">Eight instances with same PIXIE-predicted parameters, elastic collisions.</p>
     </div>
   </div>
 
-  <hr style="margin: 2rem 0;">
-  <p style="font-size:0.82rem; color:#aaa; text-align:center;">PIXIE — ICML 2026 Rebuttal</p>
+  <!-- ── Section 2: E sweep (Reviewer zN9t) ── -->
+  <h2 class="section-title">Reviewer zN9t — Material Parameter Sensitivity (E sweep)</h2>
+  <p style="font-size:0.9rem; color:#555; margin-bottom:1.2rem;">
+    Same rubber duck geometry, same free-fall conditions, varying Young's modulus E.
+    PIXIE predicts <strong style="color:#23a55a;">E = 4×10⁴ Pa</strong> — the only value producing physically plausible rubber behavior.
+  </p>
+
+  <!-- Row 1: soft cases -->
+  <div class="columns is-variable is-2" style="margin-bottom:0.5rem;">
+    <div class="column">
+      <div class="video-label">E = 1×10² Pa</div>
+      <video width="100%" autoplay loop muted playsinline controls>
+        <source src="./static/videos/e_sweep/E1e2.mp4" type="video/mp4" />
+      </video>
+      <p class="video-caption">way too soft</p>
+    </div>
+    <div class="column">
+      <div class="video-label">E = 5×10² Pa</div>
+      <video width="100%" autoplay loop muted playsinline controls>
+        <source src="./static/videos/e_sweep/E5e2.mp4" type="video/mp4" />
+      </video>
+      <p class="video-caption">too soft</p>
+    </div>
+    <div class="column">
+      <div class="video-label">E = 1×10³ Pa</div>
+      <video width="100%" autoplay loop muted playsinline controls>
+        <source src="./static/videos/e_sweep/E1e3.mp4" type="video/mp4" />
+      </video>
+      <p class="video-caption">too soft</p>
+    </div>
+    <div class="column">
+      <div class="video-label">E = 5×10³ Pa</div>
+      <video width="100%" autoplay loop muted playsinline controls>
+        <source src="./static/videos/e_sweep/E5e3.mp4" type="video/mp4" />
+      </video>
+      <p class="video-caption">slightly soft</p>
+    </div>
+    <div class="column">
+      <div class="video-label">E = 1×10⁴ Pa</div>
+      <video width="100%" autoplay loop muted playsinline controls>
+        <source src="./static/videos/e_sweep/E1e4.mp4" type="video/mp4" />
+      </video>
+      <p class="video-caption">slightly soft</p>
+    </div>
+  </div>
+
+  <!-- Row 2: correct + stiff cases -->
+  <div class="columns is-variable is-2">
+    <div class="column">
+      <div class="video-label highlight">E = 4×10⁴ Pa ✓ PIXIE predicted</div>
+      <video width="100%" autoplay loop muted playsinline controls style="box-shadow:0 0 0 3px #23a55a, 0 2px 10px rgba(0,0,0,0.1);">
+        <source src="./static/videos/e_sweep/E4e4.mp4" type="video/mp4" />
+      </video>
+      <p class="video-caption" style="color:#23a55a; font-weight:600;">physically correct</p>
+    </div>
+    <div class="column">
+      <div class="video-label">E = 1×10⁵ Pa</div>
+      <video width="100%" autoplay loop muted playsinline controls>
+        <source src="./static/videos/e_sweep/E1e5.mp4" type="video/mp4" />
+      </video>
+      <p class="video-caption">slightly stiff</p>
+    </div>
+    <div class="column">
+      <div class="video-label">E = 5×10⁵ Pa</div>
+      <video width="100%" autoplay loop muted playsinline controls>
+        <source src="./static/videos/e_sweep/E5e5.mp4" type="video/mp4" />
+      </video>
+      <p class="video-caption">too stiff</p>
+    </div>
+    <div class="column">
+      <div class="video-label">E = 1×10⁶ Pa</div>
+      <video width="100%" autoplay loop muted playsinline controls>
+        <source src="./static/videos/e_sweep/E1e6.mp4" type="video/mp4" />
+      </video>
+      <p class="video-caption">too stiff</p>
+    </div>
+    <div class="column">
+      <div class="video-label">E = 1×10⁷ Pa</div>
+      <video width="100%" autoplay loop muted playsinline controls>
+        <source src="./static/videos/e_sweep/E1e7.mp4" type="video/mp4" />
+      </video>
+      <p class="video-caption">way too stiff (near-rigid)</p>
+    </div>
+  </div>
+
 </section>
 
 </body>
