@@ -106,6 +106,45 @@
     </div>
   </div>
 
+  <!-- ── Section 3: KNN boundary interpolation (Reviewer htjP) ── -->
+  <h2 class="section-title">Reviewer htjP — KNN Boundary Interpolation</h2>
+  <p style="font-size:0.9rem; color:#555; margin-bottom:1.2rem;">
+    Reviewer htjP asked: <em>"Have you measured interpolation artifacts at material boundaries, and would a boundary-aware interpolation scheme (e.g., only averaging within same-class neighbors) improve simulation fidelity?"</em>
+  </p>
+  <p style="font-size:0.9rem; color:#555; margin-bottom:1.2rem;">
+    We study this on a tree object with two material regions — elastic leaves (E&nbsp;≈&nbsp;2×10⁴&nbsp;Pa, material class <em>jelly</em>) and a rigid trunk (E&nbsp;≈&nbsp;4×10⁸&nbsp;Pa, class <em>stationary</em>).
+    In the current implementation, K-NN smoothing averages Young's modulus across all K neighbors regardless of class.
+    At the elastic–rigid boundary this inflates the assigned E of elastic particles by up to 23×.
+    A simple fix — restricting the average to same-class neighbors after class assignment — reduces boundary contamination by <strong>2.3×</strong>, while leaving interior particles unchanged.
+  </p>
+
+  <div style="margin-bottom:1.5rem;">
+    <img src="./static/images/knn_boundary_analysis.png"
+         alt="KNN boundary analysis"
+         style="max-width:900px; width:100%; border-radius:6px; box-shadow:0 2px 10px rgba(0,0,0,0.10);" />
+    <p class="video-caption" style="max-width:900px; margin:0.4rem auto 0;">
+      <strong>Left:</strong> Mean assigned E for boundary elastic particles — naive KNN inflates E to 1.24×10⁸&nbsp;Pa (23× the ground-truth value), while boundary-aware KNN reduces it to 5.5×10⁷&nbsp;Pa.
+      <strong>Right:</strong> Relative E error (|ΔE|/E<sub>true</sub>) per group — only boundary particles are affected; interior particles show identical error in both methods.
+    </p>
+  </div>
+
+  <div class="columns is-variable is-5" style="margin-bottom:2.5rem;">
+    <div class="column">
+      <div class="video-label">Naive KNN (current)</div>
+      <video width="100%" autoplay loop muted playsinline controls>
+        <source src="./static/videos/tree_naive.mp4" type="video/mp4" />
+      </video>
+      <p class="video-caption">Boundary elastic particles stiffened by rigid trunk E leakage.</p>
+    </div>
+    <div class="column">
+      <div class="video-label highlight">Boundary-Aware KNN (proposed fix)</div>
+      <video width="100%" autoplay loop muted playsinline controls style="box-shadow:0 0 0 3px #23a55a, 0 2px 10px rgba(0,0,0,0.1);">
+        <source src="./static/videos/tree_boundary_aware.mp4" type="video/mp4" />
+      </video>
+      <p class="video-caption">Elastic leaves retain correct E — more natural deformation near the trunk.</p>
+    </div>
+  </div>
+
 </section>
 
 </body>
