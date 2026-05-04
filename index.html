@@ -383,10 +383,6 @@
                   <p class="title glow-keyword">E, ν, ρ, ID</p>
                 </div>
               </div>
-              <!-- <ul class="content is-size-6" style="margin-top:0;">
-                <li>Per-voxel annotations of <span class="glow-keyword">E, ν, ρ</span> & material ID</li>
-                <li>Generated via Gemini-2.5-Pro + physics heuristics</li>
-              </ul> -->
             </div>
           </div>
         </div>
@@ -417,48 +413,69 @@
   <section id="results" class="section is-medium has-background-light">
 
     <!-- Added: insight banner highlighting key takeaway -->
-    </div>
     <div class="container is-max-desktop">
       <h2 class="title is-2 has-text-centered">Results</h2>
-      We render a video of each 3D physic animation predicted by our model and other competitors. A state-of-the-art VLM
-      <a href="https://gemini.google.com/app">Gemini-Pro-2.5</a> is used to evaluate the realism and score the
-      candidates.
+      We evaluate each method with a blind human preference study. Participants viewed side-by-side 3D physics
+      animations from Pixie and the baselines, with method order randomized, and ranked which motion looked most
+      physically realistic.
       <!-- Quantitative results -->
-      <figure class="image is-fullwidth"><img src="static/images/fig_runtime_and_vlm.png" alt="Quantitative results" />
+      <figure class="image is-fullwidth"><img src="static/images/fig_runtime_and_human.png" alt="Human preference results" />
 
         <!-- <p class="content is-size-5 has-text-justified"> -->
-        <strong>VLM Score vs Runtime:</strong> On the PixieVerse benchmark, Pixie outperforms DreamPhysics, OmniPhysGS
-        and NeRF2Physics by 1.46-4.39x in
-        Gemini‑Pro realism while running <em>10³×</em> faster.
+        <strong>Human Preference vs Runtime:</strong> On the PixieVerse benchmark, Pixie is selected as the most
+        realistic animation in 55.00% of trials, 1.76-7.33x more often than DreamPhysics, OmniPhysGS,
+        and NeRF2Physics, while running <em>10³×</em> faster than optimization-heavy methods.
         <!-- </p> -->
       </figure>
       <br /> <br />
-      <!-- Quantitative results -->
-      <figure class="image is-fullwidth"><img src="static/images/table_main_results.png" alt="Quantitative results" />
+
+      <div class="table-container">
+        <table class="table is-striped is-hoverable is-fullwidth">
+          <thead>
+            <tr>
+              <th>Method</th>
+              <th>Best % ↑</th>
+              <th>Avg Rank ↓</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>DreamPhysics</td>
+              <td>31.25%</td>
+              <td>3.7000</td>
+            </tr>
+            <tr>
+              <td>OmniPhysGS</td>
+              <td>7.50%</td>
+              <td>2.1625</td>
+            </tr>
+            <tr>
+              <td>NeRF2Physics</td>
+              <td>28.75%</td>
+              <td>2.3125</td>
+            </tr>
+            <tr>
+              <td><strong>Pixie</strong></td>
+              <td><strong>55.00%</strong></td>
+              <td><strong>1.7875</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
         <div class="info-banner">
           <span class="icon"><i class="fas fa-chart-line"></i></span>
-          <span><strong>Insight:</strong>&nbsp;Pixie achieves <strong>state-of-the-art</strong> realism while running
-            <strong>10³× faster</strong> than existing approaches!
-            ⚡️</span>
+          <span><strong>Insight:</strong>&nbsp;Pixie has the highest human top-choice rate and best average rank while
+            retaining feed-forward inference.</span>
         </div>
-        <strong>More quantitative results!</strong> We also report perceptual metrics (PSNR, SSIM) against the
-        reference videos in
-        PixieVerse, the VLM Gemini scores, and five other metrics our
-        method optimizes including discrete material accuracy and continuous errors over E, ν, ρ. Standard
-        errors and 95% CI are also included, and best values are <strong>bolded</strong>. Pixie is by far the best
-        performer.
-        1.46-4.39x improvement in VLM score and 3.6-30.3% gains in PSNR and SSIM against competitors!
-      </figure>
 
       <!-- 
 
       <figure class="image is-fullwidth"><img src="static/images/qual_viz_ours_full_tight.png"
           alt="Quantitative results" />
         <p class="content is-size-5 has-text-justified">
-          <strong>VLM Score vs Runtime:</strong> On the PixieVerse benchmark, Pixie outperforms DreamPhysics, OmniPhysGS
-          and NeRF2Physics by 2.2–4.6× in
-          Gemini‑Pro realism while running <em>10³×</em> faster.
+          <strong>Human Preference vs Runtime:</strong> On the PixieVerse benchmark, Pixie is selected as most realistic
+          1.76-7.33x more often than the baselines while running <em>10³×</em> faster.
         </p>
       </figure>
 
@@ -466,9 +483,8 @@
       <figure class="image is-fullwidth"><img src="static/images/qual_viz_ours_full_tight_000.png"
           alt="Quantitative results" />
         <p class="content is-size-5 has-text-justified">
-          <strong>VLM Score vs Runtime:</strong> On the PixieVerse benchmark, Pixie outperforms DreamPhysics, OmniPhysGS
-          and NeRF2Physics by 2.2–4.6× in
-          Gemini‑Pro realism while running <em>10³×</em> faster.
+          <strong>Human Preference vs Runtime:</strong> On the PixieVerse benchmark, Pixie is selected as most realistic
+          1.76-7.33x more often than the baselines while running <em>10³×</em> faster.
         </p>
       </figure> -->
 

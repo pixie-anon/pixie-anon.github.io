@@ -606,9 +606,9 @@
                     <ul>
                         <li>
                             Quantitatively, Pixie achieves state-of-the-art results on our benchmark.
-                            We use a large vision model like Gemini Pro to rate the realism of the
-                            resulting animations from competing methods, and found that Pixie outperforms prior methods
-                            around 2 to 4.
+                            We use a blind human preference study to evaluate the realism of the
+                            resulting animations from competing methods, and found that Pixie is selected as most
+                            realistic substantially more often.
                         </li>
                         <li>
                             And
@@ -630,11 +630,11 @@
                 </aside>
                 <h2 class="gradient-text" style="margin-bottom: 20px; font-size: 2.5rem;">Quantitative Results</h2>
                 <ul style="font-size: 1.2rem; text-align: left; max-width: 900px; margin: 0 auto; line-height: 1.4;">
-                    <li class="fragment">2.2–4.6× higher Gemini-Pro realism than baselines.</li>
+                    <li class="fragment">1.76-7.33× higher human top-choice rate than baselines.</li>
                     <li class="fragment">Runs <em>10³×</em> faster than optimisation-heavy methods.</li>
                     <li class="fragment">State-of-the-art PSNR / SSIM gains on PixieVerse.</li>
                 </ul>
-                <img class="fragment" src="static/images/fig_runtime_and_vlm.png"
+                <img class="fragment" src="static/images/fig_runtime_and_human.png"
                     style="width:80%; border-radius:8px; margin-top:30px;" />
             </section>
             <!-- Slide 6: Qualitative Results -->
@@ -810,7 +810,7 @@
             <!-- <section class="light-bg" data-background-color="#f5f5f5">
                 <h2 class="gradient-text" style="margin-bottom: 20px; font-size: 2.5rem;">Q&As</h2>
                 <ul style="font-size: 1.2rem; text-align: left; max-width: 900px; margin: 0 auto; line-height: 1.4;">
-                    <li class="fragment">Why not VLM?</li>
+                    <li class="fragment">Why a human study?</li>
                     <ul>
                         <li class="fragment">pseudo-automatic. Still need human</li>
                         <li class="fragment">Improvement beyond the data: (1) signal from noise and (2) generalization
