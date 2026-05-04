@@ -49,7 +49,7 @@ def encode_video(frames_dir: Path, out_mp4: Path, fps: int):
     )
 
 def preprocess_object(obj_id, feature_root):
-    HOME_PATH_PREFIX = Path("/home/vlongle/code/diffPhys3d")
+    HOME_PATH_PREFIX = Path("/path/to/diffPhys3d")
     config_path = HOME_PATH_PREFIX / "third_party" / "PhysGaussian" / "config" / "real_scene" / f"custom_{obj_id}_viz_config.json"
     config = load_json(config_path)
     fps = int(1.0 / config["frame_dt"])
@@ -167,7 +167,7 @@ def main():
     # Decide default execution mode: desktop → local, cluster → slurm (no explicit warning)
     cmd_idx = 0
 
-    path_prefix = "/mnt/kostas-graid/datasets/vlongle/diffphys3d" if not on_desktop() else "/home/vlongle/diffPhys3d"
+    path_prefix = "/path/to/diffphys3d"
     for obj_id in args.obj_ids:
         # First submit / execute heavy run_viz.py jobs for each feature
         for feature in args.features:
@@ -190,7 +190,7 @@ def main():
         # Post-processing (concatenate + copy) – only when running locally
         # -------------------------------------------------------------
         if not args.slurm:
-            preprocess_object(obj_id, Path("/mnt/kostas-graid/datasets/vlongle/diffphys3d/test_viz_gs_clip"))
+            preprocess_object(obj_id, Path("/path/to/diffphys3d/test_viz_gs_clip"))
             input_videos = [
                 f"{path_prefix}/test_viz_gs_{args.model_feature}/{obj_id}/{feat}/processed_frames/output.mp4"
                 for feat in args.features
@@ -220,7 +220,7 @@ def main():
 
             # Copy to website folder and generate thumbnail
             # web_dir = f"umi-on-legs.github.io/static/videos/ours_real_world/renders/{obj_id}"
-            web_dir = f"/home/vlongle/code/pixie-3d.github.io/static/videos/ours_real_world/renders/{obj_id}"
+            web_dir = f"/path/to/pixie-anon.github.io/static/videos/ours_real_world/renders/{obj_id}"
             os.makedirs(web_dir, exist_ok=True)
 
             target_video = os.path.join(web_dir, "concat.mp4")
@@ -247,7 +247,6 @@ def main():
 
 if __name__ == "__main__":
     main()
-
 
 
 

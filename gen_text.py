@@ -140,7 +140,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Add animated title to a video.')
     parser.add_argument('input_video', help='Path to the input video file.')
     parser.add_argument('-o', '--output_video', default='output.mp4', help='Path to the output video file.')
-    # parser.add_argument('--font_path', default="/Users/longle/Downloads/Cochin_Bold/Cochin_Bold.otf", help='Path to the font file.')
+    # parser.add_argument('--font_path', default="/path/to/Cochin_Bold/Cochin_Bold.otf", help='Path to the font file.')
     parser.add_argument('--font_path', default="Cochin_Bold/Cochin_Bold.otf", help='Path to the font file.')
     args = parser.parse_args()
 

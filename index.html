@@ -10,19 +10,19 @@
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://iclr-2026-12998.github.io" />
+  <meta property="og:url" content="https://pixie-anon.github.io" />
   <meta property="og:title" content="Pixie: 3D Physics from Pixels" />
   <meta property="og:description"
     content="Pixie trains a neural network that maps pretrained visual features (i.e., CLIP) to dense material fields of physical properties in a single forward pass, enabling real‑time physics simulations." />
-  <meta property="og:image" content="https://iclr-2026-12998.github.io/static/images/preview.png" />
+  <meta property="og:image" content="https://pixie-anon.github.io/static/images/preview.png" />
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image" />
-  <meta property="twitter:url" content="https://iclr-2026-12998.github.io/" />
+  <meta property="twitter:url" content="https://pixie-anon.github.io/" />
   <meta property="twitter:title" content="Pixie: 3D Physics from Pixels" />
   <meta property="twitter:description"
     content="Pixie trains a neural network that maps pretrained visual features (i.e., CLIP) to dense material fields of physical properties in a single forward pass, enabling real‑time physics simulations." />
-  <meta property="twitter:image" content="https://iclr-2026-12998.github.io/static/images/preview.png" />
+  <meta property="twitter:image" content="https://pixie-anon.github.io/static/images/preview.png" />
 
   <!-- FONTS & ICONS -->
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet" />
@@ -327,7 +327,7 @@
         interest in integrating physics into
         3D modeling. But existing test‑time optimisation methods are slow and scene‑specific.
         <strong>Pixie</strong>
-        trains a neural network thatmaps pretrained visual features (i.e., CLIP) to <em>dense material
+        trains a neural network that maps pretrained visual features (i.e., CLIP) to <em>dense material
           fields</em> of physical properties in a single forward pass, enabling real‑time
         physics simulations.
       </p>
@@ -348,7 +348,7 @@
             <p>
               PixieVerse is a large-scale synthetic benchmark for visual-physics learning. It features thousands of
               high-quality assets that span diverse semantic classes and material behaviours, each annotated with dense
-              physical properties. The dataset is labeled automatically via a VLM pipeline we developed.
+              physical properties. The dataset is built with a human-calibrated, VLM-assisted labeling pipeline.
             </p>
           </div>
 
@@ -403,8 +403,8 @@
 
       <p class="content is-size-5 has-text-justified">
         Multi‑view posed RGB images are encoded by a NeRF with distilled CLIP features yielding a 3D feature grid. A
-        3D U‑Net predicts material fields that are transferred onto Gaussian splats and simulated with an Material Point
-        Method (MPM) Physics solver to produce 3D physics simulations.
+        3D U‑Net predicts material fields that are transferred onto Gaussian splats and simulated with a Material Point
+        Method (MPM) physics solver to produce 3D physics simulations.
       </p>
     </div>
   </section>
@@ -423,7 +423,7 @@
 
         <!-- <p class="content is-size-5 has-text-justified"> -->
         <strong>Human Preference vs Runtime:</strong> On the PixieVerse benchmark, Pixie is selected as the most
-        realistic animation in 55.00% of trials, 1.76-7.33x more often than DreamPhysics, OmniPhysGS,
+        realistic animation in 55.00% of aggregate comparisons, 1.76-7.33x more often than DreamPhysics, OmniPhysGS,
         and NeRF2Physics, while running <em>10³×</em> faster than optimization-heavy methods.
         <!-- </p> -->
       </figure>
@@ -434,29 +434,29 @@
           <thead>
             <tr>
               <th>Method</th>
-              <th>Best % ↑</th>
+              <th>Best % [90% CI] ↑</th>
               <th>Avg Rank ↓</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>DreamPhysics</td>
-              <td>31.25%</td>
+              <td>31.25 [23.46, 40.27]</td>
               <td>3.7000</td>
             </tr>
             <tr>
               <td>OmniPhysGS</td>
-              <td>7.50%</td>
+              <td>7.50 [3.93, 13.85]</td>
               <td>2.1625</td>
             </tr>
             <tr>
               <td>NeRF2Physics</td>
-              <td>28.75%</td>
+              <td>28.75 [21.23, 37.66]</td>
               <td>2.3125</td>
             </tr>
             <tr>
               <td><strong>Pixie</strong></td>
-              <td><strong>55.00%</strong></td>
+              <td><strong>55.00 [45.84, 63.84]</strong></td>
               <td><strong>1.7875</strong></td>
             </tr>
           </tbody>
@@ -466,7 +466,8 @@
         <div class="info-banner">
           <span class="icon"><i class="fas fa-chart-line"></i></span>
           <span><strong>Insight:</strong>&nbsp;Pixie has the highest human top-choice rate and best average rank while
-            retaining feed-forward inference.</span>
+            retaining feed-forward inference. Best % counts first-place selections; tied first-place rankings credit
+            all tied methods, so percentages need not sum to 100. Brackets are 90% Wilson confidence intervals.</span>
         </div>
 
       <!-- 
@@ -498,8 +499,8 @@
         </video>
         <!-- <p class="content is-size-5 has-text-justified"> -->
         <strong>What Pixie predicts:</strong> Pixie simultaneously recovers
-        discrete material class , E, ν, ρ with a high degree of accuracy. For example, the model correctly labels
-        labels foliage as elastic and
+        discrete material class, E, ν, ρ with a high degree of accuracy. For example, the model correctly labels
+        foliage as elastic and
         the metal can as rigid, while recovering realistic stiffness and density gradients within each object.
         <!-- </p> -->
         <video style="width:100%;" autoplay muted loop playsinline>
@@ -519,8 +520,8 @@
         (left, right respectively) for Pixie and Nerf2Physics, E for DreamPhysics (right), and the
         plasticity and hyperelastic function classes predicted by OmniPhysGS.
         Pixie produces
-        stable, physically plausible motion while DreamPhysics remains overly stiff due to inaccurate finegrained E
-        prediction or too high E, OmniPhysGS collapses under load due to unrealistic combination of plasticity and hyperelastic functions, and NeRF2Physics exhibits noisy
+        stable, physically plausible motion while DreamPhysics remains overly stiff due to inaccurate fine-grained E
+        prediction or too high E, OmniPhysGS collapses under load due to an unrealistic combination of plasticity and hyperelastic functions, and NeRF2Physics exhibits noisy
         artifacts in material predictions.
       </div>
 
@@ -585,7 +586,7 @@
         </figure>
         <!-- <p class="content is-size-5 has-text-justified"> -->
         <strong>Ablation Figure:</strong> Replacing CLIP with raw RGB or occupancy features hinders sim2real
-        transfer. Incorrect predictions such as leave mislaballed as metal or Young's modulus being uniform within an
+        transfer. Incorrect predictions such as leaves mislabeled as metal or Young's modulus being uniform within an
         object are marked with question marks.
 
         <!-- </p> -->
