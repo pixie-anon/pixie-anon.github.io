@@ -327,7 +327,7 @@
         interest in integrating physics into
         3D modeling. But existing test‑time optimisation methods are slow and scene‑specific.
         <strong>Pixie</strong>
-        trains a neural network that maps pretrained visual features (i.e., CLIP) to <em>dense material
+        trains a neural network that maps pretrained visual features (i.e., CLIP) to plausible <em>dense material
           fields</em> of physical properties in a single forward pass, enabling real‑time
         physics simulations.
       </p>
@@ -402,7 +402,7 @@
       </figure>
 
       <p class="content is-size-5 has-text-justified">
-        Multi‑view posed RGB images are encoded by a NeRF with distilled CLIP features yielding a 3D feature grid. A
+        Multi‑view posed RGB images are reconstructed with FeatSplat, a Gaussian Splatting representation with distilled CLIP features, yielding a 3D feature grid. A
         3D U‑Net predicts material fields that are transferred onto Gaussian splats and simulated with a Material Point
         Method (MPM) physics solver to produce 3D physics simulations.
       </p>
@@ -498,10 +498,10 @@
           <source src="static/videos/qual_viz_ours_full_tight_new.mp4" type="video/mp4" />
         </video>
         <!-- <p class="content is-size-5 has-text-justified"> -->
-        <strong>What Pixie predicts:</strong> Pixie simultaneously recovers
+        <strong>What Pixie predicts:</strong> Pixie simultaneously predicts
         discrete material class, E, ν, ρ with a high degree of accuracy. For example, the model correctly labels
         foliage as elastic and
-        the metal can as rigid, while recovering realistic stiffness and density gradients within each object.
+        the metal can as rigid, while estimating realistic stiffness and density gradients within each object.
         <!-- </p> -->
         <video style="width:100%;" autoplay muted loop playsinline>
           <source src="static/videos/combined_panel_1.mp4" type="video/mp4" />
